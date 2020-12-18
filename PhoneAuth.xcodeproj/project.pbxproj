@@ -81,10 +81,10 @@
 		D5AD19C8258A6EFE0023AD13 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				D5AD19B8258A6EA50023AD13 /* PhoneAuthApp.swift */,
-				D5AD19BA258A6EA50023AD13 /* ContentView.swift */,
 				D5B5A426258CFA4B008454E7 /* Login.swift */,
+				D5AD19B8258A6EA50023AD13 /* PhoneAuthApp.swift */,
 				D5B5A42B258D2CCE008454E7 /* Verification.swift */,
+				D5AD19BA258A6EA50023AD13 /* ContentView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";

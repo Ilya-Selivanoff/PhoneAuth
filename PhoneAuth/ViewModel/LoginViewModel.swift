@@ -18,7 +18,6 @@ class LoginViewModel: ObservableObject {
     func getCountryCode() -> String {
         
         let regionCode = Locale.current.regionCode ?? ""
-        
         return countries[regionCode] ?? ""
     }
 }
