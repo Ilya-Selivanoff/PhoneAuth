@@ -38,7 +38,7 @@ struct Verification: View {
                 
                 Text("Code sent to \(loginData.phNo)")
                     .foregroundColor(.gray)
-                    .padding()
+                    .padding(.bottom)
                 
                 Spacer(minLength: 0)
                 
@@ -47,16 +47,51 @@ struct Verification: View {
                     ForEach(0..<6, id: \.self) {index in
                         // displaying code...
                         
+                        CodeView(code: getCodeAtIndex(index: index))
+                    }
+                }
+                .padding()
+                .padding(.horizontal, 20)
+                
+                Spacer(minLength: 0)
+                
+                HStack(spacing: 6) {
+                    
+                    Text("Didn't receive code?")
+                        .foregroundColor(.gray)
+                        
+                    Button(action: {}) {
+                        
+                        Text("Request Again")
+                            .fontWeight(.bold)
+                            .foregroundColor(.black)
                     }
                 }
                 
-                Spacer(minLength: 0)
+                Button(action: {}) {
+                    
+                    Text("Get via call")
+                        .fontWeight(.bold)
+                        .foregroundColor(.black)
+                }
+                .padding(.top, 6)
+                
+                Button(action: {}) {
+                    
+                    Text("Verify and Create Account")
+                        .foregroundColor(.black)
+                        .padding(.vertical)
+                        .frame(width: UIScreen.main.bounds.width - 30)
+                        .background(Color("yellow"))
+                        .cornerRadius(15)
+                }
+                .padding()
             }
             .frame(height: UIScreen.main.bounds.height / 1.8)
             .background(Color.white)
             .cornerRadius(20)
             
-            Spacer()
+            CustomNumberPad(value: $loginData.code, isVerify: true)
         }
         .background(Color("bg").ignoresSafeArea(.all, edges: .bottom))
         .navigationBarHidden(true)
@@ -67,13 +102,13 @@ struct Verification: View {
     
     func getCodeAtIndex(index: Int) -> String {
         
-        if loginData.phNo.count > index {
+        if loginData.code.count > index {
         
-            let start = loginData.phNo.startIndex
+            let start = loginData.code.startIndex
             
-            let current = loginData.phNo.index(start, offsetBy: index)
+            let current = loginData.code.index(start, offsetBy: index)
             
-            return String(loginData.phNo[current])
+            return String(loginData.code[current])
         }
         
         return ""
